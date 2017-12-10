@@ -9,7 +9,7 @@ namespace Shortest_Path_Algorithm
     class Node
     {
       //  public int id;
-        public int distance = int.MaxValue;
+        public int distance = 150;
         public int weight = 1;
         public Node previous;
         public int X { get; private set; }

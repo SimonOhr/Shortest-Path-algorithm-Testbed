@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Shortest_Path_Algorithm
 {
-    class Rectangle
+    class Tile
     {
         Texture2D tex;
         Vector2 pos;
@@ -17,11 +17,14 @@ namespace Shortest_Path_Algorithm
         private bool inProgress;
         private bool isTarget;
         private bool isPath;
-        public Rectangle(Texture2D tex, Vector2 pos)
+        private bool isObstacle;
+        public Rectangle boundingBox;
+        public Tile(Texture2D tex, Vector2 pos)
         {
             this.pos = pos;
             this.tex = tex;
             color = Color.White;
+            boundingBox = new Rectangle((int)pos.X, (int)pos.Y, 50, 50);
         }
         public void Update()
         {
@@ -38,7 +41,12 @@ namespace Shortest_Path_Algorithm
             {
                 color = Color.Green;
             }
+            if (isObstacle)
+            {
+                color = Color.Black;
+            }
         }
+
 
         public void Draw(SpriteBatch sb)
         {
@@ -65,6 +73,11 @@ namespace Shortest_Path_Algorithm
         {
             color = Color.Green;
             isPath = true;      
+        }
+        public void SetObstacle()
+        {
+            color = Color.Black;
+
         }
     }
 }
